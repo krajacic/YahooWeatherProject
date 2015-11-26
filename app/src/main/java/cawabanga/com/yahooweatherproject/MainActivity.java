@@ -1,6 +1,7 @@
 package cawabanga.com.yahooweatherproject;
 
 import android.app.ProgressDialog;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
@@ -8,6 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import cawabanga.com.yahooweatherproject.data.Channel;
+import cawabanga.com.yahooweatherproject.data.Item;
 import cawabanga.com.yahooweatherproject.service.WeatherServiceCallback;
 import cawabanga.com.yahooweatherproject.service.YahooWeatherService;
 
@@ -42,6 +44,22 @@ public class MainActivity extends AppCompatActivity implements WeatherServiceCal
     @Override
     public void serviceSuccess(Channel channel) {
         dialog.hide();
+
+        Item item = channel.getItem();
+        int resourceId = getResources().getIdentifier("drawable/icon" + item.getCondition().getCode(), null, getPackageName());
+
+        @SuppressWarnings("deprecation")
+        Drawable weatherIconDrawable = getResources().getDrawable(resourceId);
+
+        weatherIconImageView.setImageDrawable(weatherIconDrawable);
+
+        temperatureTextView.setText(item.getCondition().getTemperature()+"\00B0 "+channel.getUnits().getTemperature());
+
+        conditionTextView.setText(item.getCondition().getDescription());
+
+        locationTextView.setText(service.getLocation());
+
+
     }
 
     @Override
