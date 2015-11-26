@@ -9,7 +9,8 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/weatherIdonImageView"
+        android:id="@+id/weatherIconImageView"
+        android:src="@drawable/loading"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
@@ -19,8 +20,10 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/temperature"
         android:id="@+id/temperatureTextView"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@+id/locationTextView"
+        android:layout_centerHorizontal="true"
+        android:textStyle="bold"
+        android:typeface="serif" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -37,12 +40,16 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/location"
         android:id="@+id/locationTextView"
-        android:layout_below="@+id/conditionTextView"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@+id/weatherIconImageView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="54dp"
+        android:textStyle="bold" />
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:src="@drawable/yahoo_logo"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:id="@+id/imageView" />
 </RelativeLayout>
